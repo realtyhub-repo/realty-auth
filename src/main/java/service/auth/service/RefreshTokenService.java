@@ -14,6 +14,7 @@ import service.auth.repository.RefreshTokenRepository;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
@@ -94,6 +95,23 @@ public class RefreshTokenService {
         refreshTokens.forEach(t->t.setRevoked(true));
 
         refreshTokenRepository.saveAll(refreshTokens);
+
+    }
+
+    public void logout(String refreshToken){
+
+        String tokenHash = tokenGenerator.hashear(refreshToken);
+
+        Optional<RefreshToken> refreshTokenOptional= refreshTokenRepository.findByTokenHash(tokenHash);
+
+        refreshTokenOptional.ifPresent(
+                t->{
+                    t.setRevoked(true);
+                    refreshTokenRepository.save(t);
+                }
+        );
+
+
 
     }
 
