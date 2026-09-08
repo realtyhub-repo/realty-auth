@@ -1,15 +1,15 @@
 package service.auth.dto.request;
 
-import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 import service.auth.validation.PasswordConfirmable;
 import service.auth.validation.PasswordMatch;
 
 @PasswordMatch
-public record RegisterRequest(
-        @Email
-        String email,
+public record ResetPasswordRequest(
+
+        @NotBlank
+        String token,
 
         @NotBlank
         @Pattern(
@@ -19,8 +19,8 @@ public record RegisterRequest(
         String password,
 
         @NotBlank
-        String confirmPassword,
+        String confirmPassword
 
-        @NotBlank
-        String nombre
-) implements PasswordConfirmable {}
+
+) implements PasswordConfirmable {
+}

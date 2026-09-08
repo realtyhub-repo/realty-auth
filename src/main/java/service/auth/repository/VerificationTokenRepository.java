@@ -10,5 +10,6 @@ import java.util.UUID;
 public interface VerificationTokenRepository extends JpaRepository<VerificationToken, UUID> {
 
     Optional<VerificationToken> findByTokenHash(String tokenHash);
+    Optional<VerificationToken> findByTokenHashAndTipo(String tokenHash, TipoVerificacion tipo);
     Optional<VerificationToken> findByUserIdAndTipoAndUsedFalse(UUID userId, TipoVerificacion tipo);
 }
