@@ -1,7 +1,5 @@
 package service.auth.controller;
 
-import jakarta.servlet.http.Cookie;
-import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.jspecify.annotations.NonNull;
@@ -18,8 +16,6 @@ import service.auth.dto.response.AuthResponse;
 import service.auth.exception.RefreshTokenNoEncontradoException;
 import service.auth.service.AuthService;
 import service.auth.service.RefreshTokenService;
-
-import java.time.Duration;
 
 @RestController
 @RequestMapping("/auth")

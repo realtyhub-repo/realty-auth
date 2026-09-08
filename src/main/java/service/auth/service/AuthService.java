@@ -2,7 +2,6 @@ package service.auth.service;
 
 
 import com.google.api.client.googleapis.auth.oauth2.GoogleIdToken.Payload;
-import jakarta.servlet.http.Cookie;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseCookie;
