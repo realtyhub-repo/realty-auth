@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import service.auth.entity.Asunto;
 import service.auth.entity.AuthProvider;
 import service.auth.entity.VerificationToken;
 import service.auth.entity.TipoVerificacion;
@@ -23,7 +24,7 @@ public class EmailVerificationService {
     private Integer EMAIL_TOKEN_EXPLAINED;
 
     @Value("${FRONTEND_URL:http://localhost:8081}")
-    private String URL;
+    private String frontendUrl;
 
     private final EmailService emailService;
     private final TokenGenerator tokenGenerator;
@@ -46,11 +47,11 @@ public class EmailVerificationService {
 
         verificationRepository.save(verificationToken);
 
-        String linkVerificacion = URL +
+        String linkVerificacion = frontendUrl +
                 "/verify-email?token=" +
                 token;
 
-        emailService.enviarCorreoVerificacion(email, linkVerificacion);
+        emailService.enviarCorreo(email, linkVerificacion, Asunto.VERIFICACION);
 
     }
 
@@ -59,7 +60,7 @@ public class EmailVerificationService {
 
         String tokenHash = tokenGenerator.hashear(tokenCrudo);
 
-        VerificationToken verificationToken  =  verificationRepository.findByTokenHash(tokenHash)
+        VerificationToken verificationToken  =  verificationRepository.findByTokenHashAndTipo(tokenHash, TipoVerificacion.EMAIL_VERIFICATION)
                 .orElseThrow(()->
                         new TokenVerificacionNoEncontradoException("El enlace de verificación no es válido"));
 

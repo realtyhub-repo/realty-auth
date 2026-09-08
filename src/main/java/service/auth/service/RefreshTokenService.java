@@ -13,7 +13,9 @@ import service.auth.exception.RefreshTokenRevocadoException;
 import service.auth.repository.RefreshTokenRepository;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -83,6 +85,15 @@ public class RefreshTokenService {
         );
 
         return new AuthResponse(nuevoAccessToken,nuevoRefreshToken);
+    }
+
+    public void revocarTodosDelUsuario(UUID userId){
+        List<RefreshToken> refreshTokens = refreshTokenRepository.findByUserIdAndRevokedFalse(userId);
+
+        refreshTokens.forEach(t->t.setRevoked(true));
+
+        refreshTokenRepository.saveAll(refreshTokens);
+
     }
 
 }
