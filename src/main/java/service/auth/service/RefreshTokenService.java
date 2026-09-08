@@ -60,6 +60,7 @@ public class RefreshTokenService {
 
 
         if(refreshToken.getRevoked()){
+            revocarTodosDelUsuario(refreshToken.getUserId());
             throw new RefreshTokenRevocadoException("Este token ya no es válido");
         }
 
