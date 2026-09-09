@@ -1,7 +1,8 @@
 package service.auth.entity;
 
 public enum RolUsuario {
-    ADMIN,
+    ADMINISTRADOR_CENTRAL,
+    GERENTE_OFICINA,
     AGENTE,
     CLIENTE
 }
