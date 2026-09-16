@@ -8,6 +8,10 @@ import org.springframework.scheduling.annotation.EnableAsync;
 @EnableAsync
 public class AuthApplication {
 
+    /*
+    * Este comentario lo hizo Karime
+    * */
+
     public static void main(String[] args) {
 
         SpringApplication.run(AuthApplication.class, args);
