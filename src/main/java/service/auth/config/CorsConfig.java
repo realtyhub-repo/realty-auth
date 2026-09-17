@@ -17,10 +17,13 @@ public class CorsConfig {
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration config = new CorsConfiguration();
-        config.setAllowedOrigins(List.of("http://localhost:5500")); // origen de tu front de pruebas
+        config.setAllowedOrigins(List.of(
+                "https://app.realty-hub.site",      // tu frontend en Vercel con dominio custom
+                "http://localhost:5500"            // para seguir probando en local si quieres
+        ));
         config.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
         config.setAllowedHeaders(List.of("*"));
-        config.setAllowCredentials(true); // obligatorio para que viaje la cookie refresh_token
+        config.setAllowCredentials(true);
 
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", config);
