@@ -16,10 +16,10 @@ import java.util.Base64;
 @Configuration
 public class JwtConfig {
 
-    @Value("classpath:keys/private.pem")
+    @Value("${JWT_PRIVATE_KEY_PATH}")
     private Resource privateKeyResource;
 
-    @Value("classpath:keys/public.pem")
+    @Value("${JWT_PUBLIC_KEY_PATH}")
     private Resource publicKeyResource;
 
     @Bean
