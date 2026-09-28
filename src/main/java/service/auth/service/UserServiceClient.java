@@ -21,7 +21,7 @@ public class UserServiceClient {
 
         try {
             return restClient.post()
-                    .uri("/usuario/internal")
+                    .uri("/internal/usuario")
                     .body(request)
                     .retrieve()
                     .body(UsuarioResponse.class);
@@ -35,7 +35,7 @@ public class UserServiceClient {
 
     public UsuarioResponse buscarUsuarioId(UUID usuarioId){
         return restClient.get()
-                .uri("/usuario/internal/{id}",usuarioId)
+                .uri("/internal/usuario/{id}",usuarioId)
                 .retrieve()
                 .body(UsuarioResponse.class);
     }
