@@ -53,10 +53,10 @@ public class AuthService {
     public ResponseCookie crearCookie(String name, String value) {
         return ResponseCookie.from(name, value)
                 .httpOnly(true)
-                .secure(true)           // 👈 debe ser true, no false
+                .secure(true)
                 .path("/auth")
                 .maxAge(Duration.ofDays(COOKIE_EXPLAIN))
-                .sameSite("None")       // 👈 no "Strict"
+                .sameSite("Lax")
                 .build();
     }
 

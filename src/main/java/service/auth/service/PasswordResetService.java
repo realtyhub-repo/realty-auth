@@ -71,7 +71,7 @@ public class PasswordResetService {
 
         verificationRepository.save(verificationToken);
 
-        String link = frontendUrl + "/reset-password.html?token="+tokenCrudo;
+        String link = frontendUrl + "/reset-password?token="+tokenCrudo;
 
         emailService.enviarCorreo(email,link, Asunto.RESTABLECER_ACCESO);
 

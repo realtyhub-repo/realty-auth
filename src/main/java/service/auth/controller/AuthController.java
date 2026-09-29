@@ -84,12 +84,10 @@ public class AuthController {
         }
         refreshTokenService.logout(refreshToken);
 
-        ResponseCookie deleteCookie = ResponseCookie.from("refresh_token","")
-                .httpOnly(true)
-                .secure(false) // debo cambiar este valor porque permite llamadas en HTTP
-                .path("/auth")
+        // mismos atributos que la cookie original para que el navegador la borre
+        ResponseCookie deleteCookie = authService.crearCookie("refresh_token", "")
+                .mutate()
                 .maxAge(0)
-                .sameSite("Strict")
                 .build();
 
 

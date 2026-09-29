@@ -48,7 +48,7 @@ public class EmailVerificationService {
         verificationRepository.save(verificationToken);
 
         String linkVerificacion = frontendUrl +
-                "/verify-email.html?token=" +
+                "/verify-email?token=" +
                 token;
 
         emailService.enviarCorreo(email, linkVerificacion, Asunto.VERIFICACION);
