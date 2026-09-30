@@ -18,8 +18,9 @@ public class CorsConfig {
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration config = new CorsConfiguration();
         config.setAllowedOrigins(List.of(
-                "https://app.realty-hub.site",      // tu frontend en Vercel con dominio custom
-                "http://localhost:5500"            // para seguir probando en local si quieres
+                "https://realty-hub.site",      //dominio
+                "https://app.realty-hub.site",     //subdominio
+                "http://localhost:5500"           //local
         ));
         config.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
         config.setAllowedHeaders(List.of("*"));
