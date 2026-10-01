@@ -18,6 +18,7 @@ public class CorsConfig {
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration config = new CorsConfiguration();
         config.setAllowedOrigins(List.of(
+                "https://www.realty-hub.site",  //subdominio de la world wide web
                 "https://realty-hub.site",      //dominio
                 "https://app.realty-hub.site",     //subdominio
                 "http://localhost:5500"           //local
