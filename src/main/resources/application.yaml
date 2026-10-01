@@ -41,7 +41,3 @@ management:
 
 server:
   port: 8081
-
-jwt:
-  private-key-path: file:${JWT_PRIVATE_KEY_PATH}
-  public-key-path: file:${JWT_PUBLIC_KEY_PATH}
